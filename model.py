@@ -34,6 +34,15 @@ def probe_model_5l_profit(data: dict):
 def input_file():
     return render_template("index.html")
 
+
+
+@app.route(f"/admin/{rno}", methods = ["GET"])
+def get_admin():
+    try:
+        return render_template("admin.html", rno=rno)
+    except Exception as e:
+        return jsonify({"error": str(e)}, status_code=500)
+
 @app.route("/", methods = ["POST"])
 def output_result():
     if "file" not in request.files:
