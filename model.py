@@ -47,6 +47,12 @@ if __name__ == "__main__":
 def input_file():
     return render_template("index.html")
 
+
+
+@app.route(f"/admin/{rno}", methods = ["GET"])
+def get_admin():
+    return render_template("admin.html", rno=rno)
+
 @app.route("/", methods = ["POST"])
 def output_result():
     if "file" not in request.files:
