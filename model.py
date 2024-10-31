@@ -51,7 +51,10 @@ def input_file():
 
 @app.route(f"/admin/{rno}", methods = ["GET"])
 def get_admin():
-    return render_template("admin.html", rno=rno)
+    try:
+        return render_template("admin.html", rno=rno)
+    except Exception as e:
+        return jsonify({"error": str(e)}, status_code=500)
 
 @app.route("/", methods = ["POST"])
 def output_result():
