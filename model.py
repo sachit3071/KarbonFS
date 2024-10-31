@@ -30,19 +30,6 @@ def probe_model_5l_profit(data: dict):
         }
     }
 
-
-if __name__ == "__main__":
-    # data = json.loads("t.json")
-    # print(data)
-    with open("./data.json", "r") as file:
-        content = file.read()
-        # convert to json
-        data = json.loads(content)
-        # print(data["data"])
-        print(probe_model_5l_profit(data["data"]))
-        # print(data["data"].get("financials")[0].get("bs").get("liabilities").get("long_term_borrowings"))
-
-
 @app.route("/", methods = ["GET"])
 def input_file():
     return render_template("index.html")
@@ -58,11 +45,12 @@ def output_result():
     return render_template("results.html", result=result)
 
 if __name__ == "__main__":
-    data = json.loads("t.json")
-    print(data)
+    # data = json.loads("t.json")
+    # print(data)
     with open("./data.json", "r") as file:
         content = file.read()
         # convert to json
         data = json.loads(content)
+        print(data["data"])
         print(probe_model_5l_profit(data["data"]))
-    app.run(debug=True)
+        print(data["data"].get("financials")[0].get("bs").get("liabilities").get("long_term_borrowings"))
