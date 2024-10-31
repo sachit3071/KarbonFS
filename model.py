@@ -32,8 +32,19 @@ def probe_model_5l_profit(data: dict):
 
 @app.route("/", methods = ["GET"])
 def input_file():
+    print("dfad")
     return render_template("index.html")
 
+<<<<<<< Updated upstream
+=======
+@app.route(f"/admin/{rno}", methods = ["GET"])
+def get_admin():
+    try:
+        return render_template("admin.html", rno=rno)
+    except Exception as e:
+        return jsonify({"error": str(e)}, status_code=500)
+
+>>>>>>> Stashed changes
 @app.route("/", methods = ["POST"])
 def output_result():
     if "file" not in request.files:
